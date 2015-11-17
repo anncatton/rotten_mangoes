@@ -1,10 +1,10 @@
 <h2>Admin Users</h2>
 
-<ul>
+<%= paginate @users %>
+
   <% @users.each do |user| %>
-    <li>Name: <%= user.firstname %> <%= user.lastname %></li>
-    <li>ID: <%= user.id %></li>
-    <li>Email: <%= user.email %></li>
-    <li>Admin? <%= user.admin %></li>
+    <h4>Name: <%= user.firstname %> <%= user.lastname %></h4>
+    <small>ID: <%= user.id %></small>
+    <p>Email: <%= user.email %></p>
+    <p>Admin? <%= user.admin %></p>
   <% end %>
-</ul>
