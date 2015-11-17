@@ -24,7 +24,7 @@
 #   pool: 5
 #   timeout: 5000
 
-if development?
+if development
   set :database, {
     adapter: "sqlite3",
     database: "db/db.sqlite3"
