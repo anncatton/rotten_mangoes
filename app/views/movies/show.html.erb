@@ -10,7 +10,7 @@
 <p><%= @movie.description %></p>
 <small>Total runtime: <%= @movie.runtime_in_minutes %> minutes.</small>
 <br>
-<small>Released on <%= @movie.release_date.httpdate %></small>
+<small>Released on <%= formatted_date(@movie.release_date) %></small>
 
 <h3>Reviews of <em><%= @movie.title %></em></h3>
 
@@ -18,7 +18,7 @@
   <% @movie.reviews.each do |review| %>
     <p><%= review.text %></p>
     <p><%= review.rating_out_of_ten %>/10</p>
-    <small>- <%= review.user.email %></small><br/>
+    <small>- <%= review.user.full_name %></small><br/>
   <% end %>
   <p><%= link_to "Write a review!", new_movie_review_path(@movie) %></p>
 <% else %>
