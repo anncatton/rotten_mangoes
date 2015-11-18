@@ -1,10 +1,7 @@
 class MoviesController < ApplicationController
 
   def index
-
-    # title = params[:title]
-    # director = params[:director]
-
+    
     title = "%#{params[:title]}%"
     director = "%#{params[:director]}%"
     runtime = params[:runtime_in_minutes]
