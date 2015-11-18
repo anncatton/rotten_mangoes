@@ -2,25 +2,37 @@ class MoviesController < ApplicationController
 
   def index
 
-    title = params[:title]
-    director = params[:director]
+    # title = params[:title]
+    # director = params[:director]
 
-    if title || director
-      @movies = Movie.where("title LIKE ? OR director LIKE ?", title, director)
-    else
-      @movies = Movie.all
+    title = "%#{params[:title]}%"
+    director = "%#{params[:director]}%"
+    runtime = params[:runtime_in_minutes]
+
+    @movies = Movie.all
+
+    if title
+      @movies = @movies.where("title LIKE ?", title)
     end
-    # @movie = Movie.new
-    # title = "%#{params[:title]}%"
-    # director = "%#{params[:director]}%"
-    # runtime = "%#{params[:runtime_in_minutes]}%"
 
+    if director
+      @movies = @movies.where("director LIKE ?", director)
+    end
 
-    # if @movie.empty?
-    #   flash[:notice] = "Sorry, no movie matches that criteria!"
-    # else
-    #   render :show
-    # end
+    if runtime == "Less than 90 minutes"
+      @movies = @movies.where("runtime_in_minutes < 90")
+    elsif runtime == "Between 90 and 120 minutes"
+      @movies = @movies.where("runtime_in_minutes >= 90 AND <= 120")
+    elsif runtime == "Over 120 minutes"
+      @movies = @movies.where("runtime_in_minutes > 120")
+    elsif runtime == "blank"
+      @movies
+    end
+
+    if @movies.empty?
+      flash.now[:notice] = "Sorry, no movie matches that criteria!"
+    end
+
   end
 
   def show

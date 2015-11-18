@@ -10,8 +10,8 @@
     <%= text_field_tag(:director) %>
   </div>
   <div>
-    <%= label_tag(:runtime_in_minutes, "Search by runtime") %>
-    <%= select_tag(:runtime_in_minutes, options_for_select(["Under 90 minutes", "Between 90 and 120 minutes", "Over 120 minutes"])) %>
+    <%= label_tag(:runtime_in_minutes, "Search by duration") %>
+    <%= select_tag(:runtime_in_minutes, options_for_select(["Blank", "Less than 90 minutes", "Between 90 and 120 minutes", "Over 120 minutes"])) %>
   </div>
   <div>
     <%= submit_tag("Search") %>
