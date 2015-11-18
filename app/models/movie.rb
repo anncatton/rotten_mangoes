@@ -21,8 +21,4 @@ class Movie < ActiveRecord::Base
     end
   end
 
-  def self.durations
-    ["Under 90 minutes", "Between 90 and 120 minutes", "Over 120 minutes"]
-  end
-
 end

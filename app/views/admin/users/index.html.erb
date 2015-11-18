@@ -12,6 +12,7 @@
     <th>Last Name</th>
     <th>Email</th>
     <th>Admin</th>
+    <th colspan="2">Action</th>
   </thead>
   <tbody>
     <% @users.each do |user| %>
@@ -21,6 +22,8 @@
       <td><%= user.lastname %></td>
       <td><%= user.email %></td>
       <td><%= user.admin %></td>
+      <td><%= link_to "Delete", admin_user_path(user), method: :delete %></td>
+      <td><%= link_to "Edit", admin_user_path(user) %></td>
     </tr>
     <% end %>
   </tbody>
