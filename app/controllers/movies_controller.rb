@@ -1,8 +1,26 @@
 class MoviesController < ApplicationController
 
   def index
-    @movies = Movie.all
-    @movie = Movie.new
+
+    title = params[:title]
+    director = params[:director]
+
+    if title || director
+      @movies = Movie.where("title LIKE ? OR director LIKE ?", title, director)
+    else
+      @movies = Movie.all
+    end
+    # @movie = Movie.new
+    # title = "%#{params[:title]}%"
+    # director = "%#{params[:director]}%"
+    # runtime = "%#{params[:runtime_in_minutes]}%"
+
+
+    # if @movie.empty?
+    #   flash[:notice] = "Sorry, no movie matches that criteria!"
+    # else
+    #   render :show
+    # end
   end
 
   def show

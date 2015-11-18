@@ -1,6 +1,6 @@
 <h3>Search for a movie</h3>
 
-<%= form_tag @movie do %>
+<%= form_tag('/movies', method: "get") do %>
   <div>
     <%= label_tag(:title, "Search by title:") %>
     <%= text_field_tag(:title) %>
@@ -10,8 +10,8 @@
     <%= text_field_tag(:director) %>
   </div>
   <div>
-    <%= label_tag(:duration_in_minutes, "Search by runtime") %>
-    <%= select_tag(:duration_in_minutes, options_for_select(["Any", "Under 90 minutes", "Between 90 and 120 minutes", "Over 120 minutes"])) %>
+    <%= label_tag(:runtime_in_minutes, "Search by runtime") %>
+    <%= select_tag(:runtime_in_minutes, options_for_select(["Under 90 minutes", "Between 90 and 120 minutes", "Over 120 minutes"])) %>
   </div>
   <div>
     <%= submit_tag("Search") %>

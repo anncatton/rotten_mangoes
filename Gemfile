@@ -54,6 +54,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # gem 'debugger', group: [:development, :test]
 
 group :development, :test do
+  gem 'pry'
   gem 'sqlite3'
   gem 'web-console', '~> 2.0'
 end
