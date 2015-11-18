@@ -1,0 +1,30 @@
+<h2>Admin Users</h2>
+<h4><%= link_to "Back to all movies", movies_path %></h4>
+
+
+
+<%= paginate @users %>
+
+<table border="1">
+  <thead>
+    <th>ID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>Admin</th>
+    <th colspan="2">Action</th>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= user.firstname %></td>
+      <td><%= user.lastname %></td>
+      <td><%= user.email %></td>
+      <td><%= user.admin %></td>
+      <td><%= link_to "Delete", admin_user_path(user), method: :delete %></td>
+      <td><%= link_to "Edit", admin_user_path(user) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

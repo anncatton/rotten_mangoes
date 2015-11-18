@@ -28,6 +28,9 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 gem 'carrierwave'
+gem 'rmagick'
+gem 'kaminari'
+gem 'faker'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -51,5 +54,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # gem 'debugger', group: [:development, :test]
 
 group :development, :test do
+  gem 'pry'
   gem 'sqlite3'
+  gem 'web-console', '~> 2.0'
 end

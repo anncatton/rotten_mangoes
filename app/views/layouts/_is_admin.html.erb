@@ -1,0 +1,8 @@
+<footer>
+  <small>
+    <% if current_user && current_user.admin? %>
+      <p>Congrats, You're an admin!</p>
+      <%= link_to "Admin Page", admin_users_path %>
+    <% end %>
+  </small>
+</footer> 

@@ -1,7 +1,38 @@
 class MoviesController < ApplicationController
 
   def index
+
+    # title = params[:title]
+    # director = params[:director]
+
+    title = "%#{params[:title]}%"
+    director = "%#{params[:director]}%"
+    runtime = params[:runtime_in_minutes]
+
     @movies = Movie.all
+
+    if title
+      @movies = @movies.where("title LIKE ?", title)
+    end
+
+    if director
+      @movies = @movies.where("director LIKE ?", director)
+    end
+
+    if runtime == "Less than 90 minutes"
+      @movies = @movies.where("runtime_in_minutes < 90")
+    elsif runtime == "Between 90 and 120 minutes"
+      @movies = @movies.where("runtime_in_minutes >= 90 AND <= 120")
+    elsif runtime == "Over 120 minutes"
+      @movies = @movies.where("runtime_in_minutes > 120")
+    elsif runtime == "blank"
+      @movies
+    end
+
+    if @movies.empty?
+      flash.now[:notice] = "Sorry, no movie matches that criteria!"
+    end
+
   end
 
   def show
@@ -46,7 +77,8 @@ class MoviesController < ApplicationController
   protected
 
   def movie_params
-    params.require(:movie).permit(:title, :director, :runtime_in_minutes, :description, :poster_image_url, :release_date)
+    params.require(:movie).permit(:title, :director, :runtime_in_minutes, :description, :poster_image, :release_date, :poster_image_url)
   end
 
 end
+

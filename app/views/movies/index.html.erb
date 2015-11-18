@@ -3,6 +3,7 @@
 <hr>
 <%= link_to "Add a movie", new_movie_path %>
 <hr>
+<%= render 'search_form' %>
 
 <% @movies.each do |movie| %>
   <h4><%= link_to movie.title, movie_path(movie) %></h4>
@@ -13,3 +14,4 @@
   <small><%= formatted_date(movie.release_date) %></small>
   <h5><%= movie.poster_image_url %></h5>
 <% end %>
+
