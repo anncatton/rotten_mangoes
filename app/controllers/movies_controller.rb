@@ -17,7 +17,7 @@ class MoviesController < ApplicationController
     end
 
     if runtime == "Less than 90 minutes"
-      @movies = @movies.where("runtime_in_minutes < 90")
+      @movies = @movies.where("runtime_in_minutes < 90") # you can set this as a variable, ("runtime_in_minutes < ?", low_range)
     elsif runtime == "Between 90 and 120 minutes"
       @movies = @movies.where("runtime_in_minutes >= 90 AND <= 120")
     elsif runtime == "Over 120 minutes"
