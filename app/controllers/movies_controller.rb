@@ -2,18 +2,20 @@ class MoviesController < ApplicationController
 
   def index
     
-    title = "%#{params[:title]}%"
-    director = "%#{params[:director]}%"
+    title = "%#{params[:user_input]}%"
+    director = "%#{params[:user_input]}%"
     runtime = params[:runtime_in_minutes]
 
     @movies = Movie.all
 
-    if title
-      @movies = @movies.title(title)
-    end
+    if params[:user_input]
+      unless @movies.title(title).empty?
+        @movies = @movies.title(title)
+      end
 
-    if director
-      @movies = @movies.director(director)
+      unless @movies.director(director).empty?
+        @movies = @movies.director(director)
+      end
     end
 
     if runtime == "Less than 90 minutes"

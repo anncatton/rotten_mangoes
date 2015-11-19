@@ -2,12 +2,8 @@
 
 <%= form_tag('/movies', method: "get") do %>
   <div>
-    <%= label_tag(:title, "Search by title:") %>
-    <%= text_field_tag(:title) %>
-  </div>
-  <div>
-    <%= label_tag(:director, "Search by director") %>
-    <%= text_field_tag(:director) %>
+    <%= label_tag(:user_input, "Search by title or director:") %>
+    <%= text_field_tag(:user_input) %>
   </div>
   <div>
     <%= label_tag(:runtime_in_minutes, "Search by duration") %>
