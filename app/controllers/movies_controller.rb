@@ -9,19 +9,19 @@ class MoviesController < ApplicationController
     @movies = Movie.all
 
     if title
-      @movies = @movies.where("title LIKE ?", title)
+      @movies = @movies.title(title)
     end
 
     if director
-      @movies = @movies.where("director LIKE ?", director)
+      @movies = @movies.director(director)
     end
 
     if runtime == "Less than 90 minutes"
-      @movies = @movies.where("runtime_in_minutes < 90") # you can set this as a variable, ("runtime_in_minutes < ?", low_range)
+      @movies = @movies.under_90_minutes
     elsif runtime == "Between 90 and 120 minutes"
-      @movies = @movies.where("runtime_in_minutes >= 90 AND <= 120")
+      @movies = @movies.between_90_and_120_minutes
     elsif runtime == "Over 120 minutes"
-      @movies = @movies.where("runtime_in_minutes > 120")
+      @movies = @movies.over_120_minutes
     elsif runtime == "blank"
       @movies
     end
